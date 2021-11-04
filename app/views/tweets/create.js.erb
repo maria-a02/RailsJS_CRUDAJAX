@@ -1,0 +1,4 @@
+<%# que muestre tweet en index y que esconda el formulario %>
+$('#tweets').prepend('<%= j render(@tweet, t: @tweet) %>');
+$('#form').empty(500)
+$('#butonsito').show(500)

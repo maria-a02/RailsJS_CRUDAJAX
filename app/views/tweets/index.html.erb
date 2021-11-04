@@ -1,0 +1,29 @@
+<h1>Los meos Tweets</h1>
+<div id="form"></div>
+<div id="showTweet"></div>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Title</th>
+      <th scope="col">Content</th>
+      <th scope="col" colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody id="tweets">
+    <% @tweets.each do |t| %>
+        <tr id="tweet-<%=t.id%>">
+            <td><%= t.id %></td>
+            <td><%= t.title %></td>
+            <td><%= t.content %></td>
+            <td><%= link_to 'Ver', t, remote: true, class: 'btn btn-success' %></td>
+            <td><%= link_to 'Editar', edit_tweet_path(t), remote: true, class: 'btn btn-warning' %></td>
+            <td><%= link_to 'Eliminar', t, method: :delete, remote: true, data: {confirm: "seguro que eliminas a #{t.title}?"}, class: 'btn btn-danger' %></td>
+        </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div id="butonsito">
+  <%= link_to 'Crear nuevo', new_tweet_path, class: 'btn btn-primary', remote: true %>
+</div>

@@ -1,0 +1,8 @@
+<tr id="tweet-<%= t.id%>">
+    <td><%= t.id %></td>
+    <td><%= t.title %></td>
+    <td><%= t.content %></td>
+    <td><%= link_to 'Ver', t, remote: true, class: 'btn btn-success' %></td>
+    <td><%= link_to 'Editar', edit_tweet_path(t), remote: true, class: 'btn btn-warning' %></td>
+    <td><%= link_to 'Eliminar', t, method: :delete, remote: true, data: {confirm: "seguro que eliminas a #{t.title}?"}, class: 'btn btn-danger' %></td>
+</tr>

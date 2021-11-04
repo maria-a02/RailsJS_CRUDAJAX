@@ -1,0 +1,4 @@
+<%# se esconda form, que se cambie el tweet %>
+$('#form').empty(500);
+<%# seleccionamos el tweet y lo cambiamos %>
+$('#tweet-<%= @tweet.id %>').replaceWith('<%= j render(@tweet, t: @tweet) %>')
