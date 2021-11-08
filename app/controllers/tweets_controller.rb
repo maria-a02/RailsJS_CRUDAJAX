@@ -1,7 +1,18 @@
 class TweetsController < ApplicationController
-  def index
-    @tweets = Tweet.order(:created_at).reverse_order
-  end
+	def index
+	tweets = "COALESCE(title, '') LIKE '%'"
+	unless params[:q].nil?
+		tweets = "COALESCE(title, '') LIKE '%" + params[:q] + 
+		"%' OR COALESCE(content, '') LIKE '%" + params[:q] + "%'"
+	end
+	@tweets = Tweet.where(tweets)
+
+	#if params[:q]
+	#	@tweets = Tweet.where('content LIKE ? or title LIKE ?', "%#{params[:q]}%", "%#{params[:q]}%")
+	#else
+    # 	@tweets = Tweet.order(:created_at).reverse_order
+  	#end
+	end
 
   def new
     @tweet = Tweet.new
